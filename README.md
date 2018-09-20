@@ -3,7 +3,7 @@ RL3 demos, use cases and practical solutions: information extraction, named enti
 
 Requires latest RL3 installed: refer to [RL3 Installation Guide](https://rl3.zorallabs.com/wiki/Installation_Guide)
 
-Some sourced may also require following packages:
+Some sources may also require following packages:
 
 * gcc
 * g++
