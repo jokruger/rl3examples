@@ -1,0 +1,6 @@
+annotation
+    number=$$
+search text
+    {number}
+if
+    true
