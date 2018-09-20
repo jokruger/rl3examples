@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# RL3 compiled models
+*.rl3c
