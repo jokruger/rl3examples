@@ -1,5 +1,3 @@
 # Quickstart Example
 
-https://rl3.zorallabs.com/wiki/Quickstart
-
-Simple demo.
+Source code for [https://rl3.zorallabs.com/wiki/Quickstart RL3 Quickstart].
