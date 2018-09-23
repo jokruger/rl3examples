@@ -1,0 +1,8 @@
+include <email.rl3>
+
+annotation
+    email=$$
+search text
+    {EMAIL}
+if
+    true

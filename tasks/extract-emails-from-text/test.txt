@@ -1,0 +1,2 @@
+How to extract email addresses from a text file?
+A simple email may looks like test@test.com, but.. it also may be Unicode: test@тест.укр, or protected with anti scraping techniques: test(at)test(dot)com, test @ test . com, test@test[punct]com, etc.
