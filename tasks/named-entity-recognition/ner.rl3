@@ -1,0 +1,8 @@
+include <person.rl3>
+
+annotation
+    person=$$
+search text
+    \<{PERSON_FULL_NAME}\>
+if
+    match $$ [[:upper:]].*[[:upper:]]{word}
