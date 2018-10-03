@@ -8,4 +8,4 @@ if
 rule group "hello" priority 0.01
     assert intent "hello" 0.01
 if
-    match text {hello}\s.*
+    match text {hello}[[:punct:]].*
