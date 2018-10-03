@@ -5,4 +5,4 @@ annotation
 search text
     \<{PERSON_FULL_NAME}\>
 if
-    match $$ [[:upper:]].*[[:upper:]]{word}
+    true
