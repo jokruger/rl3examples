@@ -1,0 +1,5 @@
+pattern eos
+    [!\.\?]
+
+pattern hello [icase]
+    (hello|hi)

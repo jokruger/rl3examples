@@ -1,15 +1,11 @@
-pattern punct
-    [!\.\?]
-
-pattern hello [icase]
-    (hello|hi)
+include "../common.rl3"
 
 rule group "hello" priority 1.0
     assert intent "hello" 1.0
 if
-    match input {hello}{punct}?
+    match text {hello}{eos}?
 
 rule group "hello" priority 0.01
     assert intent "hello" 0.01
 if
-    match input {hello}\s.*
+    match text {hello}\s.*
