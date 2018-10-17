@@ -1,0 +1,36 @@
+include <phrases.rl3>
+
+annotation
+    intent="hello" [weight="1"]
+search text
+    \<{HELLO}\>
+if
+    true
+
+annotation
+    intent="goodbye" [weight="1"]
+search text
+    ^({GOODBYE}|stop|quit|done|exit)$
+if
+    true
+
+annotation
+    intent="what_is_your_name" [weight="1"]
+search text
+    \<{WHAT_IS_YOUR_NAME}{EOS}
+if
+    true
+
+annotation
+    intent="bot_name" [weight="1"]
+search text
+    ^(?i:{ref last bot_name}){EOS}
+if
+    true
+
+annotation
+    intent="what_is_x" [weight="0.1", X=x]
+search text
+    \<{WHAT_IS} {x=[^!\.\?]+}{EOS}
+if
+    true

@@ -1,8 +1,0 @@
-pattern eos
-    [!\.\?]
-
-pattern hello [icase]
-    (hello|hi|hey)
-
-pattern goodbye [icase]
-    (bye|see you|goodbye?)
