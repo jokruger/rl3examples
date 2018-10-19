@@ -86,7 +86,7 @@ class Chatbot():
 
         return (Answer(message='ouch...'), context)
 
-chatbot = Chatbot('Bot')
+chatbot = Chatbot('Talkbot')
 
 print('Bot: Hello!\n')
 user_input = ''
