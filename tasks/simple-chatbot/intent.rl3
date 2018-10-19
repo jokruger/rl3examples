@@ -34,3 +34,10 @@ search text
     \<{WHAT_IS} {x=[^!\.\?]+}{EOS}
 if
     true
+
+annotation
+    intent="default" [weight="0.01", X=x]
+search text
+    ^{x=[^!\.\?]+}{EOS}
+if
+    true

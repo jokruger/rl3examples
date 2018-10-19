@@ -9,9 +9,8 @@ class Answer():
 
 def substitute(text, factsheet):
     t = text
-    if factsheet is not None and len(factsheet) > 0:
-        for i in factsheet.get_facts():
-            t = t.replace('{%s}' % i.get_label(), i.get_value())
+    for i in factsheet.get_facts():
+        t = t.replace('{%s}' % i.get_label(), i.get_value())
     return t
 
 def make_answer(templates, subfacts, context):
@@ -19,7 +18,7 @@ def make_answer(templates, subfacts, context):
     for i in templates:
         try:
             t = substitute(i, subfacts)
-            t = substitute(i, context)
+            t = substitute(t, context)
             if re.search(r"{[a-zA-Z0-9_\-]+}", t) is None:
                 return Answer(message=t)
         except:
@@ -46,6 +45,9 @@ class Actions():
     def what_is_x(self, w, subfacts, conclusions, context):
         return make_answer(["I know nothing about {X}."], subfacts, context)
 
+    def default(self, w, subfacts, conclusions, context):
+        return make_answer(["{X}?"], subfacts, context)
+
 class Chatbot():
     def __init__(self, name):
         self.name = name
@@ -54,18 +56,8 @@ class Chatbot():
         self.engine.load('./intent.rl3c')
 
     def get_intents(self, fs):
-        groups = dict()
-        for i in fs.get_facts('intent'):
-            k = int(i.get_weight() * 1000)
-            if k not in groups:
-                groups[k] = []
-            groups[k].append((i.get_value(), i.get_weight(), i.get_factsheet() if i.has_factsheet() else None))
-        intents = []
-        for i in sorted(groups.keys(), reverse=True):
-            t = groups[i]
-            random.shuffle(t)
-            intents += t
-        return intents
+        intents = [(i.get_value(), i.get_weight(), i.get_factsheet() if i.has_factsheet() else None) for i in fs.get_facts('intent')]
+        return sorted(intents, reverse=True, key=lambda x: x[1])
 
     def process(self, user_input, context):
         try:
@@ -90,7 +82,7 @@ class Chatbot():
                         facts.assert_simple_fact('prior_intent', name)
                         return (answer, facts.to_json())
         except:
-            raise
+            pass
 
         return (Answer(message='ouch...'), context)
 
